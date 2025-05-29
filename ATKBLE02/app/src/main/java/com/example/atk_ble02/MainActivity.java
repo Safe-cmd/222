@@ -117,13 +117,13 @@ public class MainActivity extends AppCompatActivity {
 
         sendButton.setOnClickListener(v -> {
             if (isSafeToSend) {
-                Log.d(TAG, "发送测试用户数据...");
-                sendDataToModule("Test Data " + System.currentTimeMillis() % 1000);
+                Log.d(TAG, "发送 '0' 命令...");
+                sendDataToModule("0"); // 直接发送 '0' 字符串，不加 \r\n
             } else {
-                Toast.makeText(MainActivity.this, "设备尚未准备好发送数据 (isSafeToSend=false)", Toast.LENGTH_SHORT).show();
-                Log.w(TAG, "Attempted to send test data but not safe to send yet.");
+                Toast.makeText(MainActivity.this, "设备尚未准备好", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         sendAtCommandButton.setOnClickListener(v -> {
             if (isSafeToSend) {
